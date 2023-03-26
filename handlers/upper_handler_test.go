@@ -35,7 +35,7 @@ func TestRoutes(t *testing.T) {
 	}
 
 	// Verify the response body
-	expected := `{"message":"ABC"}`
+	expected := `{"message":"xxx"}`
 	if w.Body.String() != expected {
 		t.Errorf("handler returned unexpected body: got %v want %v",
 			w.Body.String(), expected)
