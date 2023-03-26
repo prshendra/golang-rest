@@ -27,4 +27,9 @@ jobs:
     - name: Build
       run: go build
 
+    - name: Generate artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: golang-rest
+
     
