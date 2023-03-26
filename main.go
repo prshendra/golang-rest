@@ -7,6 +7,6 @@ import (
 
 func main() {
 	r := gin.Default()
-	handlers.RegisterRoutes(r)
+	handlers.RegisterRoutes(R)
 	r.Run()
 }
