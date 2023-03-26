@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -29,6 +30,12 @@ func RegisterRoutes(r *gin.Engine) {
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
+		})
+	})
+
+	r.GET("/date-now", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": time.Now().String(),
 		})
 	})
 }

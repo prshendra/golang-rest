@@ -49,7 +49,7 @@ jobs:
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Stop golang-rest service
+      - name: Start golang-rest service
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.SSH_SERVER }}
