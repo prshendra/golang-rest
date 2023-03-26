@@ -31,6 +31,14 @@ jobs:
         with:
           path: out/
 
+      - name: Stop golang-rest service
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_SERVER }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: sudo service golang-rest stop
+
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2.1
         with:
@@ -40,3 +48,11 @@ jobs:
           remote_host: ${{ secrets.SSH_SERVER }}
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Stop golang-rest service
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_SERVER }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: sudo service golang-rest start
