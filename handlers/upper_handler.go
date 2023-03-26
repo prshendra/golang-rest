@@ -25,4 +25,10 @@ func RegisterRoutes(r *gin.Engine) {
 			"message": strings.ToUpper(data.Input),
 		})
 	})
+
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "pong",
+		})
+	})
 }

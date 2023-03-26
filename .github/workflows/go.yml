@@ -24,9 +24,19 @@ jobs:
         run: go test -v ./...
 
       - name: Build
-        run: go build
+        run: go build -o out/
 
       - name: Generate artifacts
         uses: actions/upload-artifact@v3
         with:
-          path: golang-rest
+          path: out/
+
+      - name: rsync deployments
+      uses: burnett01/rsync-deployments@5.2.1
+      with:
+        switches: -avzr --delete
+        path: out/
+        remote_path: ${{ secrets.REMOTE_PATH }}
+        remote_host: ${{ secrets.SSH_SERVER }}
+        remote_user: ${{ secrets.SSH_USER }}
+        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
