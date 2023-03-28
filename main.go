@@ -8,5 +8,5 @@ import (
 func main() {
 	r := gin.Default()
 	handlers.RegisterRoutes(r)
-	r.Run()
+	r.Run(":8081")
 }
